@@ -1,0 +1,3 @@
+[submodule "src/nexrad-level-3-data"]
+	path = src/nexrad-level-3-data
+	url = git@github.com:netbymatt/nexrad-level-3-data.git
