@@ -1,4 +1,5 @@
 const { createCanvas } = require('canvas');
+const Palette = require('./palette');
 
 const draw = (data, product) => {
 	// canvas size
@@ -17,23 +18,26 @@ const draw = (data, product) => {
 
 	// canvas settings
 	ctx.imageSmoothingEnabled = true;
-	ctx.lineWidth = 1;
+	ctx.lineWidth = 4;
 	ctx.translate(dim.x / 2, dim.y / 2);
 	ctx.rotate(-Math.PI / 2);
 
+	// generate a palette
+	const palette = Palette.generate(product.palette);
+
 	data.radialPackets[0].radials.forEach((radial) => {
-		const startAngle = radial.startAngle * Math.PI / 180;
-		const endAngle = startAngle + radial.angleDelta * Math.PI / 180;
+		const startAngle = radial.startAngle * (Math.PI / 180);
+		const endAngle = startAngle + radial.angleDelta * (Math.PI / 180);
 		// for each bin
 		radial.bins.forEach((bin, idx) => {
 			ctx.beginPath();
-			ctx.strokeStyle = product.palette[bin];
+			ctx.strokeStyle = palette[bin];
 			ctx.arc(0, 0, idx + data.radialPackets[0].firstBin, startAngle, endAngle);
 			ctx.stroke();
 		});
 	});
 
-	console.log(data);
+	return canvas;
 };
 
 module.exports = draw;

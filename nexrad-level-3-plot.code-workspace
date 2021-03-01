@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.eol": "\n",
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": false,
+		"files.exclude": {
+			"**/node_modules": true
+		},
+		"search.exclude": {
+			"**/data": true
+		}
+	}
+}

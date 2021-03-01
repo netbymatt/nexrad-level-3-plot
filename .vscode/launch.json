@@ -11,7 +11,7 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}/demos/78-n1p-one-hour-precipitation.js"
+			"program": "${workspaceFolder}/demos/78-n1p-one-hour-precipitation.js",
 		}
 	]
 }
