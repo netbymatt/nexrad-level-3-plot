@@ -22,6 +22,12 @@ const draw = (data, product) => {
 	ctx.translate(dim.x / 2, dim.y / 2);
 	ctx.rotate(-Math.PI / 2);
 
+	// get scaling from product or use default
+	const scaling = {
+		scale: data?.productDescription?.plot?.scale ?? 1,
+		offset: data?.productDescription?.plot?.offset ?? 0,
+	};
+
 	// generate a palette
 	const palette = Palette.generate(product.palette);
 
@@ -31,7 +37,7 @@ const draw = (data, product) => {
 		// for each bin
 		radial.bins.forEach((bin, idx) => {
 			ctx.beginPath();
-			ctx.strokeStyle = palette[bin];
+			ctx.strokeStyle = palette[Math.round((bin - scaling.offset) / scaling.scale)];
 			ctx.arc(0, 0, idx + data.radialPackets[0].firstBin, startAngle, endAngle);
 			ctx.stroke();
 		});

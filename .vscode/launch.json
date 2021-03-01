@@ -4,14 +4,33 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
+		
 		{
 			"type": "pwa-node",
 			"request": "launch",
-			"name": "Launch Program",
+			"name": "78 N1P",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
 			"program": "${workspaceFolder}/demos/78-n1p-one-hour-precipitation.js",
-		}
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "80 NTP",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}/demos/80-ntp-storm-total-accumulation.js",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
+			"name": "172 DTA",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}/demos/172-dta-digital-storm-total",
+		},
 	]
 }

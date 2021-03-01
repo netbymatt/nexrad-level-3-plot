@@ -3,7 +3,7 @@ const { plot } = require('../src');
 const { writePngToFile } = require('../src/utils/file');
 
 // read file
-const fileName = 'LOT_N1P_2021_01_31_11_06_30';
+const fileName = 'LOT_DTA_2021_02_28_15_05_33';
 const file = fs.readFileSync(`./demos/data/${fileName}`);
 
 // pass to plotting engine as a string or buffer
