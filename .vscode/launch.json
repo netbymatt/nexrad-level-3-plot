@@ -26,6 +26,15 @@
 		{
 			"type": "pwa-node",
 			"request": "launch",
+			"name": "170 DAA",
+			"skipFiles": [
+				"<node_internals>/**"
+			],
+			"program": "${workspaceFolder}/demos/170-dta-digital-one-hour",
+		},
+		{
+			"type": "pwa-node",
+			"request": "launch",
 			"name": "172 DTA",
 			"skipFiles": [
 				"<node_internals>/**"

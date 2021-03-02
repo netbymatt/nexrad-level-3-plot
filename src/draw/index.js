@@ -22,22 +22,20 @@ const draw = (data, product) => {
 	ctx.translate(dim.x / 2, dim.y / 2);
 	ctx.rotate(-Math.PI / 2);
 
-	// get scaling from product or use default
-	const scaling = {
-		scale: data?.productDescription?.plot?.scale ?? 1,
-		offset: data?.productDescription?.plot?.offset ?? 0,
-	};
-
 	// generate a palette
 	const palette = Palette.generate(product.palette);
-
+	// calculate scaling paramater with respect to pallet's designed criteria
+	const paletteScale = (data?.productDescription?.plot?.maxDataValue ?? 255) / (product.palette.baseScale ?? data?.productDescription?.plot?.maxDataValue ?? 1);
+	// use the raw values to avoid scaling and un-scaling
 	data.radialPackets[0].radials.forEach((radial) => {
 		const startAngle = radial.startAngle * (Math.PI / 180);
 		const endAngle = startAngle + radial.angleDelta * (Math.PI / 180);
 		// for each bin
 		radial.bins.forEach((bin, idx) => {
+			// skip null values
+			if (bin === null) return;
 			ctx.beginPath();
-			ctx.strokeStyle = palette[Math.round((bin - scaling.offset) / scaling.scale)];
+			ctx.strokeStyle = palette[Math.round(bin * paletteScale)];
 			ctx.arc(0, 0, idx + data.radialPackets[0].firstBin, startAngle, endAngle);
 			ctx.stroke();
 		});
