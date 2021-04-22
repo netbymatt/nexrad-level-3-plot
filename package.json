@@ -31,6 +31,6 @@
   },
   "dependencies": {
     "canvas": "^2.6.1",
-    "nexrad-level-3-data": "file:src/nexrad-level-3-data"
+    "nexrad-level-3-data": "^0.3.2"
   }
 }
