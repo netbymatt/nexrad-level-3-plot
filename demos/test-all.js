@@ -1,6 +1,5 @@
 const fs = require('fs');
-const { plot } = require('../src');
-const { writePngToFile } = require('../src/utils/file');
+const { plot, writePngToFile } = require('../src');
 
 // get a list of all data files
 const files = fs.readdirSync('./data/');
