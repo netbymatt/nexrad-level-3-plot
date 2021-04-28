@@ -1,6 +1,7 @@
 const NexradLevel3Data = require('nexrad-level-3-data');
 const { products, productAbbreviations } = require('./products');
 const draw = require('./draw');
+const { writePngToFile } = require('./utils/file');
 
 const plot = (file, options) => {
 	// parse the file
@@ -19,4 +20,5 @@ const plot = (file, options) => {
 
 module.exports = {
 	plot,
+	writePngToFile,
 };

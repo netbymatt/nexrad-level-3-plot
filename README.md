@@ -11,8 +11,7 @@ npm -i nexrad-level-3-plot
 ## Call
 ```javascript
 const fs = require('fs');
-const { plot } = require('./src');
-const { writePngToFile } = require('../src/utils/file');
+const { plot, writeToPngFile } = require('nexrad-level-3-plot');
 
 // read a file
 const file = fs.readFileSync('<path to data>');

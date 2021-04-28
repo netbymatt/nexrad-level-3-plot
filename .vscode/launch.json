@@ -18,38 +18,22 @@
 		{
 			"type": "pwa-node",
 			"request": "launch",
-			"name": "78 N1P",
+			"name": "Test Single",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}/demos/78-n1p-one-hour-precipitation.js",
+			"program": "${workspaceFolder}/demos/test.js",
+			"cwd": "${workspaceFolder}/demos",
 		},
 		{
 			"type": "pwa-node",
 			"request": "launch",
-			"name": "80 NTP",
+			"name": "Test All",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}/demos/80-ntp-storm-total-accumulation.js",
-		},
-		{
-			"type": "pwa-node",
-			"request": "launch",
-			"name": "170 DAA",
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"program": "${workspaceFolder}/demos/170-dta-digital-one-hour",
-		},
-		{
-			"type": "pwa-node",
-			"request": "launch",
-			"name": "172 DTA",
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"program": "${workspaceFolder}/demos/172-dta-digital-storm-total",
+			"program": "${workspaceFolder}/demos/test-all.js",
+			"cwd": "${workspaceFolder}/demos",
 		},
 	]
 }
