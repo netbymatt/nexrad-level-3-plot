@@ -48,7 +48,7 @@ Returns a [Canvas](https://www.npmjs.com/package/canvas) object.
 
 |Paramater|Type|Default|Description|
 |---|---|---|---|
-file|Buffer or ReadableStream||A NOAA Nexrad level 3 data file to plot. See [data](#data).
+file|Buffer or String||A NOAA Nexrad level 3 data file to plot. See [data](#data).
 options.size|integer|1800|1 to 1800. Size of the x and y axis in pixels. The image must be square so only a single integer is needed. See [downsampling](#downsampling)
 options.background|string|#000000|Background color of the image. This can be transparent by using #RGBA notation. See [ctx.fillStyle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle) for more information.
 
