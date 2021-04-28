@@ -2,7 +2,7 @@ const NexradLevel3Data = require('nexrad-level-3-data');
 const { products, productAbbreviations } = require('./products');
 const draw = require('./draw');
 
-const plot = (file) => {
+const plot = (file, options) => {
 	// parse the file
 	const data = NexradLevel3Data(file);
 	// test the product code and product type
@@ -12,7 +12,7 @@ const plot = (file) => {
 	if (!product) throw new Error(`Unsupported product code ${data.productDescription.code}`);
 
 	// call the draw function
-	const image = draw(data, product);
+	const image = draw(data, product, options);
 
 	return image;
 };
