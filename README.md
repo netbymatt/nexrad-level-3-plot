@@ -41,7 +41,32 @@ This package is currently incomplete. It will plot raster data created by the pa
 172|DTA|Digital Total Accumulation
 
 # Demos
-Test code and data is provided in the `./demo` folder. `test.js` can be used to test any one of the products by commenting/uncommenting the appropriate line in the file. All images will be output as PNG to `./output`. A `test-all.js` is also provided to plot all of the products provided in the `./data/` folder.
+Test code and data is provided in the `./demo` folder. `test.js` can be used to test any one of the products by commenting/uncommenting the appropriate line in the file. All images will be output as PNG to `./output`. A `test-all.js` is also provided to plot all of the products provided in the `./data/` folder. This test will product images in multiple sizes to show scaling built-in scaling functionality.
+
+# API
+
+## plot(file, options)
+Returns a [Canvas](https://www.npmjs.com/package/canvas) object.
+
+|Paramater|Type|Description|
+|---|---|---|
+file|Buffer or ReadableStream|A NOAA Nexrad level 3 data file to plot. See [data](#data).
+options.size|integer|1 to 1800. See [downsampling](#downsampling)
+
+### Downsampling
+A full size plot is 1800 x 1800 pixels. This corresponds to the maximum range of the radar ~250 mi * maximum resolution 0.25 mi/bin * 2 (east and west side of radar).
+
+options.size < 1800 will internally scale the image to the selected size. The scaling algorithm is specific to radar data and returns the maximum value over the range of bins that are combined due to the scaling factor. This ensures that maximum reflectivity or maximum velocity are preserved during the scaling process. Using an image scaling package is not preferred in this case as the scaling algorithm used my mask important data.
+
+options.size > 1800 is invalid as this would cause data to be interpolated and would not be a true representation of the data returned by the radar. If you need this functionality it's recommended to use an image scaling package such as [jimp](https://www.npmjs.com/package/jimp) or [gm](https://www.npmjs.com/package/gm) on the Canvas returned by plot().
+
+## writePngToFile(fileName, canvas)
+Returns a Promise which resolves to the written file name.
+Writes a PNG file to disk. Provided as a convenience function for production and testing.
+|Paramater|Type|Description|
+|---|---|---|
+fileName|string|A file name or path used by [fs.createWriteStream()](https://nodejs.org/api/fs.html#fs_fs_createwritestream_path_options).
+canvas|[Canvas](https://www.npmjs.com/package/canvas)|Typically the output of plot().
 
 # Acknowledgements
 The code for this project is based upon:

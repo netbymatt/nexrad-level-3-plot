@@ -16,6 +16,7 @@ const draw = (data, product, _options) => {
 
 	// calculate scale
 	if (options.size > DEFAULT_OPTIONS.size) throw new Error(`Upsampling is not supported. Provide a size <= ${DEFAULT_OPTIONS.size}`);
+	if (options.size < 1) throw new Error('Provide a size > 0');
 	const scale = DEFAULT_OPTIONS.size / options.size;
 
 	// create the canvas and context
@@ -28,7 +29,8 @@ const draw = (data, product, _options) => {
 
 	// canvas settings
 	ctx.imageSmoothingEnabled = true;
-	ctx.lineWidth = 4;
+	// minimum line width of 2
+	ctx.lineWidth = Math.max(2, 4 / scale);
 	ctx.translate(options.size / 2, options.size / 2);
 	ctx.rotate(-Math.PI / 2);
 
