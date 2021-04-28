@@ -2,6 +2,30 @@
 
 > A javascript implementation for plotting Nexrad Level III data parsed via [nexrad-level-3-data](https://github.com/netbymatt/nexrad-level-3-data/).
 
+# Use
+## Install
+```bash
+npm -i nexrad-level-3-plot
+```
+
+## Call
+```javascript
+const fs = require('fs');
+const { plot } = require('./src');
+const { writePngToFile } = require('../src/utils/file');
+
+// read a file
+const file = fs.readFileSync('<path to data>');
+// parse and plot
+const level3Plot = plot(file);
+// use bundled utility to write to disk
+(async () => {
+	await writePngToFile('<path to output>.png');
+})();
+```
+# Data
+Level three data is available from NOAA free of charge. [nexrad-level-3-data](https://github.com/netbymatt/nexrad-level-3-data/#background-information) has additional details about these data sources.
+
 # Work in Progress
 This package is currently incomplete. It will plot raster data created by the package mentioned above but there are several limitations that will be addressed in future releases.
 - Color scales do not dynamically change when needed such as with total precipitation products.
