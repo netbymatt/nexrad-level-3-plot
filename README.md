@@ -66,7 +66,7 @@ Writes a PNG file to disk. Provided as a convenience function for production and
 |Paramater|Type|Description|
 |---|---|---|
 fileName|string|A file name or path used by [fs.createWriteStream()](https://nodejs.org/api/fs.html#fs_fs_createwritestream_path_options).
-canvas|[Canvas](https://www.npmjs.com/package/canvas)|Typically the output of plot().
+canvas|[Canvas](https://www.npmjs.com/package/canvas)|Typically the output of [plot()](#plotfile-options).
 
 # Acknowledgements
 The code for this project is based upon:
