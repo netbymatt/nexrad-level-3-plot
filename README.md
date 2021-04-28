@@ -37,6 +37,7 @@ This package is currently incomplete. It will plot raster data created by the pa
 80|NTP|Storm total precipitation
 170|DAA|Digital One Hour Accumulation
 172|DTA|Digital Total Accumulation
+177|HCC|Hybrid Hydrometeor Classification
 
 # Demos
 Test code and data is provided in the `./demo` folder. `test.js` can be used to test any one of the products by commenting/uncommenting the appropriate line in the file. All images will be output as PNG to `./output`. A `test-all.js` is also provided to plot all of the products provided in the `./data/` folder. This test will product images in multiple sizes to show scaling built-in scaling functionality.
