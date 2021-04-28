@@ -28,8 +28,6 @@ Level three data is available from NOAA free of charge. [nexrad-level-3-data](ht
 # Work in Progress
 This package is currently incomplete. It will plot raster data created by the package mentioned above but there are several limitations that will be addressed in future releases.
 - Color scales do not dynamically change when needed such as with total precipitation products.
-- The size of the output image is hard coded to 1800x1800
-- Background color/transparency is hard coded
 - Only some products are [supported](#supported-products)
 
 ## Supported Products
