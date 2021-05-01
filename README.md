@@ -35,6 +35,7 @@ This package is currently incomplete. It will plot raster data created by the pa
 |---|---|---|
 78|N1P|One-hour precipitation
 80|NTP|Storm total precipitation
+165|N0H,N1H,N2H,N3H|Hydrometeor Classification
 170|DAA|Digital One Hour Accumulation
 172|DTA|Digital Total Accumulation
 177|HCC|Hybrid Hydrometeor Classification
