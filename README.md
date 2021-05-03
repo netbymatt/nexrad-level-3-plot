@@ -61,6 +61,9 @@ options.size < 1800 will internally scale the image to the selected size. The sc
 
 options.size > 1800 is invalid as this would cause data to be interpolated and would not be a true representation of the data returned by the radar. If you need this functionality it's recommended to use an image scaling package such as [jimp](https://www.npmjs.com/package/jimp) or [gm](https://www.npmjs.com/package/gm) on the Canvas returned by plot().
 
+## plotAndData(file, options)
+Returns {image, data} where image is the same as the return value from plot() and data is the raw data returned from [nexrad-level-3-data](https://github.com/netbymatt/nexrad-level-3-data/).
+
 ## writePngToFile(fileName, canvas)
 Returns a Promise which resolves to the written file name.
 Writes a PNG file to disk. Provided as a convenience function for production and testing.
