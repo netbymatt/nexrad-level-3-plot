@@ -5,6 +5,7 @@ const DEFAULT_OPTIONS = {
 	// must be a square image
 	size: 1800,
 	background: 'black',
+	lineWidth: 2,
 };
 
 const draw = (data, product, _options) => {
@@ -29,8 +30,7 @@ const draw = (data, product, _options) => {
 
 	// canvas settings
 	ctx.imageSmoothingEnabled = true;
-	// minimum line width of 2
-	ctx.lineWidth = Math.max(2, 4 / scale);
+	ctx.lineWidth = options.lineWidth;
 	ctx.translate(options.size / 2, options.size / 2);
 	ctx.rotate(-Math.PI / 2);
 
