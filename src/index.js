@@ -12,6 +12,15 @@ const plotAndData = (file, options) => {
 	const product = products[data.productDescription.code];
 	if (!product) throw new Error(`Unsupported product code ${data.productDescription.code}`);
 
+	// test for a null product code
+	if (data.productDescription.nullProductFlag) {
+		console.log('Null data');
+		console.log(data.productDescription.nullProductFlag);
+		return {
+			image: null,
+			data,
+		};
+	}
 	// call the draw function
 	const image = draw(data, product, options);
 

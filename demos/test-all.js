@@ -19,6 +19,9 @@ const files = fs.readdirSync('./data/');
 				try {
 					const level3Plot = plot(rawFile, { size });
 					console.log(level3Plot);
+					// test for returned image
+					if (!level3Plot) return false;
+
 					// write to disk
 					return writePngToFile(`./output/${file}-${size}.png`, level3Plot);
 				} catch (e) {

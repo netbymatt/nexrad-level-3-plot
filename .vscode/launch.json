@@ -25,15 +25,6 @@
 			"program": "${workspaceFolder}/demos/test.js",
 			"cwd": "${workspaceFolder}/demos",
 		},
-		{
-			"type": "pwa-node",
-			"request": "launch",
-			"name": "Test All",
-			"skipFiles": [
-				"<node_internals>/**"
-			],
-			"program": "${workspaceFolder}/demos/test-all.js",
-			"cwd": "${workspaceFolder}/demos",
-		},
+
 	]
 }
