@@ -47,6 +47,7 @@ Test code and data is provided in the `./demo` folder. `test.js` can be used to 
 
 ## plot(file, options)
 Returns a [Canvas](https://www.npmjs.com/package/canvas) object.
+> Note: May return null if the productNullFlag is set. This is common on precipitation total products that have not seen precipitation in several hours.
 
 |Paramater|Type|Default|Description|
 |---|---|---|---|
