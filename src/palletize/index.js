@@ -2,6 +2,7 @@
 const { createCanvas } = require('canvas');
 const generatePalette = require('./generatepalette');
 const closest = require('./closest');
+const { DEFAULT_OPTIONS: DRAW_DEFAULT_OPTIONS } = require('../draw');
 
 // default options
 const DEFAULT_OPTIONS = {
@@ -15,15 +16,15 @@ const palletize = (sourceCtx, product, _options) => {
 
 	// always call the generate palette function
 	// it will return a key for caching purposes and add the necessary transparent index
-	const { palette, key } = generatePalette(options.palette, options.generate, _options.background, product);
+	const { palette, key } = generatePalette(options.palletize.palette, options.palletize.generate, options.background, product);
 
 	// get original image data
-	const sourceImageData = sourceCtx.getImageData(0, 0, _options.size, _options.size);
+	const sourceImageData = sourceCtx.getImageData(0, 0, options.size, options.size);
 
 	// create indexed canvas
-	const indexedCanvas = createCanvas(_options.size, _options.size);
+	const indexedCanvas = createCanvas(options.size, options.size);
 	const indexedCtx = indexedCanvas.getContext('2d', { pixelFormat: 'A8' });
-	const indexedImageData = indexedCtx.getImageData(0, 0, _options.size, _options.size);
+	const indexedImageData = indexedCtx.getImageData(0, 0, options.size, options.size);
 
 	// loop through each pixel
 	indexedImageData.data.forEach((val, idx) => {
@@ -34,27 +35,27 @@ const palletize = (sourceCtx, product, _options) => {
 	indexedCtx.putImageData(indexedImageData, 0, 0);
 
 	// attach palette and return
-	indexedCanvas.palette = palette;
+	indexedCanvas.palette = new Uint8ClampedArray(palette);
 	return indexedCanvas;
 };
 
 // manually combine options
 const combineOptions = (_options, product) => {
-	let options = _options;
+	const options = _options;
 	if (typeof _options.palletize === 'boolean') {
 		// use all defaults
-		options = DEFAULT_OPTIONS;
+		options.palletize = DEFAULT_OPTIONS;
 	} else {
 		// combine provided options with defaults
-		options = {
-			...DEFAULT_OPTIONS,
-			_options,
-		};
+		options.palletize = { ...DEFAULT_OPTIONS, ..._options.palletize };
 	}
 	// load the product's palette if none provided
-	if (!options.palette || options.palette.length === 0) {
-		options.palette = product.palette;
+	if (!options.palletize.palette || options.palletize.palette.length === 0) {
+		options.palletize.palette = product.palette?.colors ?? product.palette;
 	}
+	// test for missing size and grab default
+	if (!options.size) options.size = DRAW_DEFAULT_OPTIONS.size;
+	if (!options.background) options.background = DRAW_DEFAULT_OPTIONS.background;
 	return options;
 };
 

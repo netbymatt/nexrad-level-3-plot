@@ -78,4 +78,7 @@ const draw = (data, product, _options) => {
 	return canvas;
 };
 
-module.exports = draw;
+module.exports = {
+	draw,
+	DEFAULT_OPTIONS,
+};

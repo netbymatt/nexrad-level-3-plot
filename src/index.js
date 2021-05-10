@@ -1,6 +1,6 @@
 const NexradLevel3Data = require('nexrad-level-3-data');
 const { products, productAbbreviations } = require('./products');
-const draw = require('./draw');
+const { draw } = require('./draw');
 const palletize = require('./palletize');
 const { writePngToFile } = require('./utils/file');
 
@@ -34,7 +34,7 @@ const plotAndData = (file, options) => {
 
 	// palletize image, but fail gracefully if the palletize function is configured incorrectly
 	try {
-		const palletized = palletize(image, product, options);
+		const palletized = palletize(image.getContext('2d'), product, options);
 		return {
 			image,
 			palletized,

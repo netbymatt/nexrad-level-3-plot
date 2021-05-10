@@ -32,4 +32,4 @@ const closest = (match, palette, key) => {
 
 const geometricDistance = (a, b) => a.reduce((acc, val, idx) => acc + (val - b[idx]) ** 2, 0);
 
-module.exports = closest();
+module.exports = closest;
