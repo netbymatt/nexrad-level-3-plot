@@ -9,6 +9,13 @@
 			"**/node_modules/": true,
 			"demos/output/**/*": true,
 			"demos/output/**/.gitignore": false
-		}
+		},
+		"cSpell.words": [
+			"Palletization",
+			"Palletizing",
+			"palettized",
+			"palletize",
+			"palletized"
+		]
 	}
 }

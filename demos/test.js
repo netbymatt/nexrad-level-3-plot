@@ -20,7 +20,7 @@ const fileName = 'LOT_N1P_2021_01_31_11_06_30';
 
 // pass to plotting engine as a string or buffer
 const file = fs.readFileSync(`./data/${fileName}`);
-const level3Plot = plot(file);
+const level3Plot = plot(file, { palletize: true, background: 'red' });
 
 console.log(level3Plot);
 (async () => {

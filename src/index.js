@@ -1,6 +1,7 @@
 const NexradLevel3Data = require('nexrad-level-3-data');
 const { products, productAbbreviations } = require('./products');
 const draw = require('./draw');
+const palletize = require('./palletize');
 const { writePngToFile } = require('./utils/file');
 
 const plotAndData = (file, options) => {
@@ -24,15 +25,34 @@ const plotAndData = (file, options) => {
 	// call the draw function
 	const image = draw(data, product, options);
 
-	return {
-		image,
-		data,
-	};
+	// stop here if not asking for a palletized image
+	if (!options?.palletize) {
+		return {
+			image, data,
+		};
+	}
+
+	// palletize image, but fail gracefully if the palletize function is configured incorrectly
+	try {
+		const palletized = palletize(image, product, options);
+		return {
+			image,
+			palletized,
+			data,
+		};
+	} catch (e) {
+	// don't return the failed palletized image
+		console.error(e.stack);
+		return {
+			image,
+			data,
+		};
+	}
 };
 
 const plot = (file, options) => {
-	const { image } = plotAndData(file, options);
-	return image;
+	const { image, palletized } = plotAndData(file, options);
+	return palletized ?? image;
 };
 
 module.exports = {
