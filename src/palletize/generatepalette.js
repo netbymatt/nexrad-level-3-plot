@@ -2,7 +2,9 @@
 const { createCanvas } = require('canvas');
 const crypto = require('crypto');
 
-const generatePalette = (sourcePalette, steps, background, product) => {
+const generatePalette = (_sourcePalette, steps, background, product) => {
+	// get palette from either color array only or object with color array
+	const sourcePalette = _sourcePalette.colors ?? _sourcePalette;
 	// determine if work needs to be done or if the palette is workable
 	// intentionally >= 256 to allow for one index to be used for the transparent value
 	if (((sourcePalette.length / 3) * steps) >= 256) throw new Error('Invalid combination of source palette size and generate');

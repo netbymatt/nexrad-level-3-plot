@@ -26,7 +26,7 @@ const closest = (match, palette, key) => {
 		}
 	}
 	// store closest match to speed up next iteration
-	cache[asHex] = closestIndex;
+	cache[key][asHex] = closestIndex;
 	return closestIndex;
 };
 
