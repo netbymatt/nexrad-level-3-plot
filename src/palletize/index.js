@@ -10,7 +10,9 @@ const DEFAULT_OPTIONS = {
 	palette: [],
 };
 
-const palletize = (sourceCtx, product, _options) => {
+const palletize = (sourceCtx, _product, _options) => {
+	// create a copy of the product to ensure no data is written back to the product and used on subsequent calls
+	const product = _product;
 	// combine options and defaults
 	const options = combineOptions(_options, product);
 
@@ -44,7 +46,7 @@ const combineOptions = (_options, product) => {
 	const options = _options;
 	if (typeof _options.palletize === 'boolean') {
 		// use all defaults
-		options.palletize = DEFAULT_OPTIONS;
+		options.palletize = { ...DEFAULT_OPTIONS };
 	} else {
 		// combine provided options with defaults
 		options.palletize = { ...DEFAULT_OPTIONS, ..._options.palletize };
