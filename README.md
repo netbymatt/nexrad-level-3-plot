@@ -56,6 +56,7 @@ options.size|integer|1800|1 to 1800. Size of the x and y axis in pixels. The ima
 options.background|string|#000000|Background color of the image. This can be transparent by using #RGBA notation. See [ctx.fillStyle](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillStyle) for more information.
 options.lineWidth|integer|2|The raster image is created by drawing several arcs at the locations and colors specified in the data file. When scaling down you may get a better looking image by adjusting this value to something large than the default.
 options.palletize|boolean\|object|false|After drawing the image convert the image from RGBA to a palettized image. When true the same pallet as the product is used. Additional options are described in [palletizing](#palletizing). This can significantly reduce the size of the resulting image with minimal loss of clarity.
+|options.logger|logger|console|By default messages and errors will be logged to the console. These can be surpressed by passing false. A custom logger can be provided. It must provide the functions ``log()`` and ``error()``.
 
 ### Downsampling
 A full size plot is 1800 x 1800 pixels. This corresponds to the maximum range of the radar ~250 mi * maximum resolution 0.25 mi/bin * 2 (east and west side of radar).

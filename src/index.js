@@ -4,7 +4,8 @@ const { draw } = require('./draw');
 const palletize = require('./palletize');
 const { writePngToFile } = require('./utils/file');
 
-const plotAndData = (file, options) => {
+const plotAndData = (file, _options) => {
+	const options = combineOptions(_options);
 	// parse the file
 	const data = NexradLevel3Data(file);
 	// test the product code and product type
@@ -15,8 +16,6 @@ const plotAndData = (file, options) => {
 
 	// test for a null product code
 	if (data.productDescription.nullProductFlag) {
-		console.log('Null data');
-		console.log(data.productDescription.nullProductFlag);
 		return {
 			image: null,
 			data,
@@ -42,7 +41,7 @@ const plotAndData = (file, options) => {
 		};
 	} catch (e) {
 	// don't return the failed palletized image
-		console.error(e.stack);
+		options.logger.error(e.stack);
 		return {
 			image,
 			data,
@@ -53,6 +52,21 @@ const plotAndData = (file, options) => {
 const plot = (file, options) => {
 	const { image, palletized } = plotAndData(file, options);
 	return palletized ?? image;
+};
+
+// combine options and defaults
+const combineOptions = (newOptions) => {
+	let logger = newOptions?.logger ?? console;
+	if (logger === false) logger = nullLogger;
+	return {
+		...newOptions, logger,
+	};
+};
+
+// null logger for options.logger = false
+const nullLogger = {
+	log: () => {},
+	error: () => {},
 };
 
 module.exports = {

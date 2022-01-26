@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/netbymatt/nexrad-level-3-plot#readme",
   "devDependencies": {
-    "eslint": "^7.21.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint": "^8.0.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.22.1"
   },
   "dependencies": {
     "canvas": "^2.6.1",
-    "nexrad-level-3-data": "^0.4.0"
+    "nexrad-level-3-data": "^0.5.0"
   }
 }
