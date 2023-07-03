@@ -37,7 +37,11 @@ const draw = (data, product, _options) => {
 	// generate a palette
 	const palette = Palette.generate(product.palette);
 	// calculate scaling paramater with respect to pallet's designed criteria
-	const paletteScale = (data?.productDescription?.plot?.maxDataValue ?? 255) / (product.palette.baseScale ?? data?.productDescription?.plot?.maxDataValue ?? 1);
+	let paletteScale = (data?.productDescription?.plot?.maxDataValue ?? 255) / (product.palette.baseScale ?? data?.productDescription?.plot?.maxDataValue ?? 1);
+	// if the product uses maximum accumulation use a different calculation
+	if (data?.productDescription?.maxAccumulation) {
+		paletteScale = (data?.productDescription?.plot?.maxDataValue ?? 255) / (data?.productDescription?.maxAccumulation ?? product.palette.baseScale);
+	}
 	// use the raw values to avoid scaling and un-scaling
 	data.radialPackets[0].radials.forEach((radial) => {
 		const startAngle = radial.startAngle * (Math.PI / 180);
