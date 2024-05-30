@@ -16,6 +16,7 @@
 			"palletized",
 			"palletize",
 			"palletized",
-		]
+		],
+		"editor.formatOnSave": true
 	}
 }
