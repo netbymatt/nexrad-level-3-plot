@@ -1,8 +1,8 @@
 // palletize an image
-const { createCanvas } = require('canvas');
-const generatePalette = require('./generatepalette');
-const closest = require('./closest');
-const { DEFAULT_OPTIONS: DRAW_DEFAULT_OPTIONS } = require('../draw');
+import { createCanvas } from 'canvas';
+import generatePalette from './generatepalette.mjs';
+import closest from './closest.mjs';
+import { DEFAULT_OPTIONS as DRAW_DEFAULT_OPTIONS } from '../draw/index.mjs';
 
 // default options
 const DEFAULT_OPTIONS = {
@@ -61,4 +61,4 @@ const combineOptions = (_options, product) => {
 	return options;
 };
 
-module.exports = palletize;
+export default palletize;

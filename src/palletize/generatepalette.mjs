@@ -1,6 +1,6 @@
 // generate a palette with the number of steps provided
-const { createCanvas } = require('canvas');
-const crypto = require('crypto');
+import { createCanvas } from 'canvas';
+import crypto from 'crypto';
 
 const generatePalette = (_sourcePalette, steps, background, product) => {
 	// get palette from either color array only or object with color array
@@ -63,4 +63,4 @@ const calcIntermediate = (a, b, num, den) => {
 	return ((diff * num) / den + b);
 };
 
-module.exports = generatePalette;
+export default generatePalette;

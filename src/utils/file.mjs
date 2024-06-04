@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 // write a canvas to a Png file
 const writePngToFile = (fileName, canvas) => new Promise((resolve, reject) => {
 	const writeStream = fs.createWriteStream(fileName);
@@ -10,6 +10,7 @@ const writePngToFile = (fileName, canvas) => new Promise((resolve, reject) => {
 	writeStream.on('error', (e) => reject(e));
 });
 
-module.exports = {
+export {
+	// eslint-disable-next-line import/prefer-default-export
 	writePngToFile,
 };

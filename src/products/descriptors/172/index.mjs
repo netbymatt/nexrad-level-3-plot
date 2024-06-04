@@ -29,7 +29,7 @@ const palette = {
 	baseScale: 2.56,
 };
 
-module.exports = {
+export {
 	code,
 	abbreviation,
 	description,

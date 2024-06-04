@@ -6,25 +6,23 @@
 	"configurations": [
 		{
 			"name": "Test All",
-			"program": "${workspaceFolder}/demos/test-all.js",
+			"program": "${workspaceFolder}/demos/test-all.mjs",
 			"cwd": "${workspaceFolder}/demos",
 			"request": "launch",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"type": "pwa-node"
+			"type": "node"
 		},
-		
 		{
-			"type": "pwa-node",
+			"type": "node",
 			"request": "launch",
 			"name": "Test Single",
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}/demos/test.js",
+			"program": "${workspaceFolder}/demos/test.mjs",
 			"cwd": "${workspaceFolder}/demos",
 		},
-
 	]
 }

@@ -22,7 +22,7 @@ const palette = [
 	0, 0, 256,
 ];
 
-module.exports = {
+export {
 	code,
 	abbreviation,
 	description,

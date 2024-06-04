@@ -1,10 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import { glob } from 'glob';
 
 // load all products in folder automatically
-const folders = fs.readdirSync(__dirname).filter((folder) => fs.lstatSync(path.join(__dirname, folder)).isDirectory());
-// eslint-disable-next-line import/no-dynamic-require, global-require
-const productsRaw = folders.map((folder) => require(path.join(__dirname, folder)));
+const allDescriptors = await glob('/descriptors/**/*.mjs', { root: import.meta.dirname, windowsPathsNoEscape: true });
+const productsRaw = await Promise.all(allDescriptors.map((descriptor) => import(`file:///${descriptor}`)));
 
 // make up a list of products by integer type
 const products = {};
@@ -16,7 +14,7 @@ productsRaw.forEach((product) => {
 // list of available product code abbreviations for type-checking
 const productAbbreviations = productsRaw.map((product) => product.abbreviation).flat();
 
-module.exports = {
+export {
 	products,
 	productAbbreviations,
 };

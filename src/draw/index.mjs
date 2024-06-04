@@ -1,5 +1,5 @@
-const { createCanvas } = require('canvas');
-const Palette = require('./palette');
+import { createCanvas } from 'canvas';
+import generate from './palette.mjs';
 
 const DEFAULT_OPTIONS = {
 	// must be a square image
@@ -35,7 +35,7 @@ const draw = (data, product, _options) => {
 	ctx.rotate(-Math.PI / 2);
 
 	// generate a palette
-	const palette = Palette.generate(product.palette);
+	const palette = generate(product.palette);
 	// calculate scaling paramater with respect to pallet's designed criteria
 	let paletteScale = (data?.productDescription?.plot?.maxDataValue ?? 255) / (product.palette.baseScale ?? data?.productDescription?.plot?.maxDataValue ?? 1);
 	// if the product uses maximum accumulation use a different calculation
@@ -82,7 +82,8 @@ const draw = (data, product, _options) => {
 	return canvas;
 };
 
-module.exports = {
+export default draw;
+export {
 	draw,
 	DEFAULT_OPTIONS,
 };

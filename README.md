@@ -14,17 +14,15 @@ npm -i nexrad-level-3-plot
 
 ## Call
 ```javascript
-const fs = require('fs');
-const { plot, writeToPngFile } = require('nexrad-level-3-plot');
+import fs from 'fs/promises';
+import { plot, writeToPngFile } from 'nexrad-level-3-plot';
 
 // read a file
-const file = fs.readFileSync('<path to data>');
+const file = await fs.readFile('<path to data>');
 // parse and plot
 const level3Plot = plot(file);
 // use bundled utility to write to disk
-(async () => {
-	await writePngToFile('<path to output>.png');
-})();
+await writePngToFile('<path to output>.png');
 ```
 # Data
 Level three data is available from NOAA free of charge. [nexrad-level-3-data](https://github.com/netbymatt/nexrad-level-3-data/#background-information) has additional details about these data sources.
@@ -45,7 +43,7 @@ This package is currently incomplete. It will plot raster data created by the pa
 177|HCC|Hybrid Hydrometeor Classification
 
 # Demos
-Test code and data is provided in the `./demo` folder. `test.js` can be used to test any one of the products by commenting/uncommenting the appropriate line in the file. All images will be output as PNG to `./output`. A `test-all.js` is also provided to plot all of the products provided in the `./data/` folder. This test will product images in multiple sizes to show scaling built-in scaling functionality.
+Test code and data is provided in the `./demo` folder. `test.js` can be used to test any one of the products by commenting/uncommenting the appropriate line in the file. All images will be output as PNG to `./output`. A `test-all.js` is also provided to plot all of the products provided in the `./data/` folder. This test will product images in multiple sizes to show scaling built-in scaling functionality. Some non-supported products (N0S) are included in the test data to show how these are detected and throw errors.
 
 # API
 

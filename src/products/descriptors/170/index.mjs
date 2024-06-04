@@ -3,7 +3,7 @@ const abbreviation = 'DAA';
 const description = 'Digital One Hour Accumulation';
 
 // same colors as 172
-const { colors } = require('../172').palette;
+const { colors } = (await import('../172/index.mjs')).palette;
 
 const palette = {
 	colors,
@@ -12,7 +12,7 @@ const palette = {
 	baseScale: 6.0,
 };
 
-module.exports = {
+export {
 	code,
 	abbreviation,
 	description,

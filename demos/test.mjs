@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-const fs = require('fs');
-const { plotAndData, writePngToFile } = require('../src');
+import fs from 'fs/promises';
+import { plotAndData, writePngToFile } from '../src/index.mjs';
 
 // read file
 
@@ -26,11 +26,9 @@ const fileName = 'LOT_DTA_2023_07_03_05_24_06';
 // const fileName = 'LOT_HHC_2021_01_31_11_06_30';
 
 // pass to plotting engine as a string or buffer
-const file = fs.readFileSync(`./data/${fileName}`);
+const file = await fs.readFile(`./data/${fileName}`);
 const level3Plot = plotAndData(file, { palletize: { generate: 2 }, background: 'black' });
 
 console.log(level3Plot);
-(async () => {
-	await writePngToFile(`./output/${fileName}.png`, level3Plot.image);
-	await writePngToFile(`./output/${fileName}-pal.png`, level3Plot.palletized);
-})();
+await writePngToFile(`./output/${fileName}.png`, level3Plot.image);
+await writePngToFile(`./output/${fileName}-pal.png`, level3Plot.palletized);

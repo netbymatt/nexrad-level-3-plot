@@ -1,38 +1,32 @@
 module.exports = {
 	root: true,
 	env: {
-		commonjs: true,
 		node: true,
 	},
 	extends: 'airbnb-base',
-	globals: {
-		Atomics: 'readonly',
-		SharedArrayBuffer: 'readonly',
-	},
 	parserOptions: {
-		ecmaVersion: 2020,
+		ecmaVersion: 2023,
 	},
 	rules: {
 		indent: [
 			'error',
 			'tab',
 		],
+		'no-tabs': 0,
+		'max-len': 0,
 		'no-use-before-define': [
 			'error',
 			{
 				variables: false,
 			},
 		],
-		'no-param-reassign': [
+		'import/extensions': [
 			'error',
 			{
-				props: false,
+				mjs: 'always',
+				js: 'never',
 			},
 		],
-		'no-tabs': 0,
-		'max-len': 0,
-		'no-bitwise': 0,
-		'linebreak-style': 0,
 	},
 	ignorePatterns: [
 		'*.min.js',

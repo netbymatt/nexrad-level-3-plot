@@ -41,6 +41,4 @@ const generate = (palette, _options) => {
 	return expanded;
 };
 
-module.exports = {
-	generate,
-};
+export default generate;

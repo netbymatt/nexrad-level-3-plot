@@ -1,8 +1,8 @@
-const NexradLevel3Data = require('nexrad-level-3-data');
-const { products, productAbbreviations } = require('./products');
-const { draw } = require('./draw');
-const palletize = require('./palletize');
-const { writePngToFile } = require('./utils/file');
+import NexradLevel3Data from 'nexrad-level-3-data';
+import { products, productAbbreviations } from './products/index.mjs';
+import { draw } from './draw/index.mjs';
+import palletize from './palletize/index.mjs';
+import { writePngToFile } from './utils/file.mjs';
 
 const plotAndData = (file, _options) => {
 	const options = combineOptions(_options);
@@ -69,7 +69,7 @@ const nullLogger = {
 	error: () => {},
 };
 
-module.exports = {
+export {
 	plot,
 	writePngToFile,
 	plotAndData,

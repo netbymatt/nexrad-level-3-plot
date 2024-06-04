@@ -4,9 +4,9 @@ const description = 'Storm total precipitation';
 
 // 4-bit palette
 // same as 78 N1P
-const { palette } = require('../78');
+const { palette } = await import('../78/index.mjs');
 
-module.exports = {
+export {
 	code,
 	abbreviation,
 	description,
