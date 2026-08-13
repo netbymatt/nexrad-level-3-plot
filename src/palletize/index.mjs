@@ -10,6 +10,26 @@ const DEFAULT_OPTIONS = {
 	palette: [],
 };
 
+// manually combine options
+const combineOptions = (_options, product) => {
+	const options = _options;
+	if (typeof _options.palletize === 'boolean') {
+		// use all defaults
+		options.palletize = { ...DEFAULT_OPTIONS };
+	} else {
+		// combine provided options with defaults
+		options.palletize = { ...DEFAULT_OPTIONS, ..._options.palletize };
+	}
+	// load the product's palette if none provided
+	if (!options.palletize.palette || options.palletize.palette.length === 0) {
+		options.palletize.palette = product.palette?.colors ?? product.palette;
+	}
+	// test for missing size and grab default
+	if (!options.size) options.size = DRAW_DEFAULT_OPTIONS.size;
+	if (!options.background) options.background = DRAW_DEFAULT_OPTIONS.background;
+	return options;
+};
+
 const palletize = (sourceCtx, _product, _options) => {
 	// create a copy of the product to ensure no data is written back to the product and used on subsequent calls
 	const product = _product;
@@ -39,26 +59,6 @@ const palletize = (sourceCtx, _product, _options) => {
 	// attach palette and return
 	indexedCanvas.palette = new Uint8ClampedArray(palette);
 	return indexedCanvas;
-};
-
-// manually combine options
-const combineOptions = (_options, product) => {
-	const options = _options;
-	if (typeof _options.palletize === 'boolean') {
-		// use all defaults
-		options.palletize = { ...DEFAULT_OPTIONS };
-	} else {
-		// combine provided options with defaults
-		options.palletize = { ...DEFAULT_OPTIONS, ..._options.palletize };
-	}
-	// load the product's palette if none provided
-	if (!options.palletize.palette || options.palletize.palette.length === 0) {
-		options.palletize.palette = product.palette?.colors ?? product.palette;
-	}
-	// test for missing size and grab default
-	if (!options.size) options.size = DRAW_DEFAULT_OPTIONS.size;
-	if (!options.background) options.background = DRAW_DEFAULT_OPTIONS.background;
-	return options;
 };
 
 export default palletize;

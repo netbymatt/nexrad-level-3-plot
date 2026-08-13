@@ -3,6 +3,8 @@
 // memoize results by provided key.
 const cache = {};
 
+const geometricDistance = (a, b) => a.reduce((acc, val, idx) => acc + (val - b[idx]) ** 2, 0);
+
 const closest = (match, palette, key) => {
 	// generate cache key
 	if (!cache[key]) cache[key] = {};
@@ -29,7 +31,5 @@ const closest = (match, palette, key) => {
 	cache[key][asHex] = closestIndex;
 	return closestIndex;
 };
-
-const geometricDistance = (a, b) => a.reduce((acc, val, idx) => acc + (val - b[idx]) ** 2, 0);
 
 export default closest;

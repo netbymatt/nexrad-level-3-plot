@@ -1,6 +1,7 @@
 // generate a palette with the number of steps provided
-import { createCanvas } from 'canvas';
-import crypto from 'crypto';
+import crypto from 'node:crypto';
+import getBackgroundColor from './getbackgroundcolor.mjs';
+import calcIntermediate from './calcIntermediate.mjs';
 
 const generatePalette = (_sourcePalette, steps, background, product) => {
 	// get palette from either color array only or object with color array
@@ -38,29 +39,6 @@ const generatePalette = (_sourcePalette, steps, background, product) => {
 		palette,
 		key,
 	};
-};
-
-// get the background color by drawing a 1x1 pixel image
-// this allows any form of color accepted by canvas.ctx to be used
-const getBackgroundColor = (color) => {
-	// make the canvas
-	const canvas = createCanvas(1, 1);
-	const ctx = canvas.getContext('2d');
-
-	// fill the canvas
-	ctx.fillStyle = color;
-	ctx.fillRect(0, 0, 1, 1);
-
-	// get the color
-	return ctx.getImageData(0, 0, 1, 1).data;
-};
-
-// calcaulate a value that is i.e. 1/3 of the way between a and b
-// a = 12, b = 0, num = 1, den = 3 returns 4
-// a = 20, b = 10, num = 1, den = 4 returns 12.5
-const calcIntermediate = (a, b, num, den) => {
-	const diff = a - b;
-	return ((diff * num) / den + b);
 };
 
 export default generatePalette;

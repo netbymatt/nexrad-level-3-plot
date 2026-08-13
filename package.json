@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"description": "Plotting of NEXRAD level 3 data files",
 	"main": "src/index.mjs",
+	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"lint": "npx eslint .",
@@ -35,7 +36,7 @@
 	"dependencies": {
 		"canvas": "^3.0.0",
 		"glob": "^13.0.0",
-		"nexrad-level-3-data": "^1.0.0"
+		"nexrad-level-3-data": "^1.0.1"
 	},
 	"engines": {
 		"node": ">=24.0.0"

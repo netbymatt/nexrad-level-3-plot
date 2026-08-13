@@ -7,7 +7,9 @@ const productsRaw = await Promise.all(allDescriptors.map((descriptor) => import(
 // make up a list of products by integer type
 const products = {};
 productsRaw.forEach((product) => {
-	if (products[product.code]) { throw new Error(`Duplicate product code ${product.code}`); }
+	if (products[product.code]) {
+		throw new Error(`Duplicate product code ${product.code}`);
+	}
 	products[product.code] = product;
 });
 

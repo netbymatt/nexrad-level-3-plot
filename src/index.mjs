@@ -2,7 +2,8 @@ import NexradLevel3Data from 'nexrad-level-3-data';
 import { products, productAbbreviations } from './products/index.mjs';
 import { draw } from './draw/index.mjs';
 import palletize from './palletize/index.mjs';
-import { writePngToFile } from './utils/file.mjs';
+import writePngToFile from './utils/writepngtofile.mjs';
+import combineOptions from './combineOptions.mjs';
 
 const plotAndData = (file, _options) => {
 	const options = combineOptions(_options);
@@ -40,7 +41,7 @@ const plotAndData = (file, _options) => {
 			data,
 		};
 	} catch (e) {
-	// don't return the failed palletized image
+		// don't return the failed palletized image
 		options.logger.error(e.stack);
 		return {
 			image,
@@ -52,21 +53,6 @@ const plotAndData = (file, _options) => {
 const plot = (file, options) => {
 	const { image, palletized } = plotAndData(file, options);
 	return palletized ?? image;
-};
-
-// combine options and defaults
-const combineOptions = (newOptions) => {
-	let logger = newOptions?.logger ?? console;
-	if (logger === false) logger = nullLogger;
-	return {
-		...newOptions, logger,
-	};
-};
-
-// null logger for options.logger = false
-const nullLogger = {
-	log: () => {},
-	error: () => {},
 };
 
 export {

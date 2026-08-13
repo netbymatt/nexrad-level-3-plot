@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import { plotAndData, writePngToFile } from '../src/index.mjs';
 
 // sizes to produce
