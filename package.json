@@ -1,6 +1,6 @@
 {
 	"name": "nexrad-level-3-plot",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Plotting of NEXRAD level 3 data files",
 	"main": "src/index.mjs",
 	"type": "module",
