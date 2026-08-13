@@ -5,7 +5,8 @@
 	"main": "src/index.mjs",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"lint": "eslint"
+		"lint": "npx eslint .",
+		"lint:fix": "npx eslint . --fix"
 	},
 	"repository": {
 		"type": "git",
@@ -26,16 +27,21 @@
 	},
 	"homepage": "https://github.com/netbymatt/nexrad-level-3-plot#readme",
 	"devDependencies": {
-		"eslint": "^8.0.0",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-plugin-import": "^2.22.1"
+		"@eslint/compat": "^2.1.0",
+		"@eslint/js": "^9.39.5",
+		"eslint": "^9.39.5",
+		"eslint-config-airbnb-extended": "^3.1.1"
 	},
 	"dependencies": {
-		"canvas": "^2.6.1",
-		"glob": "^10.4.1",
-		"nexrad-level-3-data": "^0.6.0"
+		"canvas": "^3.0.0",
+		"glob": "^13.0.0",
+		"nexrad-level-3-data": "^1.0.0"
 	},
 	"engines": {
-		"node": ">=14.0.0"
+		"node": ">=24.0.0"
+	},
+	"allowScripts": {
+		"canvas@3.2.3": true,
+		"unrs-resolver@1.12.2": true
 	}
 }
